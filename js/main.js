@@ -165,7 +165,7 @@
             }
         }
         //When all tiles are created, we wait for the user to click
-        document.onmousedown = shuffleGame;
+        document.getElementById('canvas').onmousedown = shuffleGame;
     };
 
     function shuffleGame () {
@@ -198,7 +198,7 @@
                 yPosition += iTileHeight;
             }
         }
-        document.onmousedown = dragTile; //event listener to detect click & dragging
+        document.getElementById('canvas').onmousedown = dragTile; //event listener to detect click & dragging
     };
 
     function dragTile ( e ) {
@@ -220,8 +220,8 @@
             oApp.context.drawImage( oImage, oCurrentTile.sx, oCurrentTile.sy, iTileWidth, iTileHeight, oMousePosition.x - ( iTileWidth / 2 ), oMousePosition.y - ( iTileHeight / 2 ), iTileWidth, iTileHeight);
             oApp.context.restore();
 
-            document.onmousemove = draggingTile;
-            document.onmouseup = droppedTile;
+            document.getElementById('canvas').onmousemove = draggingTile;
+            document.getElementById('canvas').onmouseup = droppedTile;
         }
     };
 
@@ -278,8 +278,8 @@
         //called when a tile is dropped
 
         //remove event listeners for the duration of the swap
-        document.onmousemove = null;
-        document.onmouseup = null;
+        document.getElementById('canvas').onmousemove = null;
+        document.getElementById('canvas').onmouseup = null;
 
         //swap tiles
         if( oHoveredTile != null ) {
@@ -321,9 +321,9 @@
 
     function gameOver(){
         //forbid further interactions with the tiles
-        document.onmousedown = null;
-        document.onmousemove = null;
-        document.onmouseup = null;
+        document.getElementById('canvas').onmousedown = null;
+        document.getElementById('canvas').onmousemove = null;
+        document.getElementById('canvas').onmouseup = null;
 
         //display win message
         drawMessage( "You won !" );
